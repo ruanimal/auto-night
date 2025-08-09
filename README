@@ -2,7 +2,11 @@
 Kwin 脚本，根据是否有全屏应用，自动切换 nightlight 状态
 
 ## 调试
-- 查看日志：`journalctl --user-unit=plasma-kwin_wayland -f -n100`
+js 脚本是基于监听事件模式运行的，运行脚本时无法获得返回值
+可以 journalctl 查看标准输出和错误输出
+如果没有注册事件，则脚本就只是单次执行，再次运行得重新加载
+
+- 查看日志：`journalctl --user-unit=plasma-kwin_wayland -f -n100 |grep kwin_wayland `
 - 加载脚本：`qdbus6 org.kde.KWin /Scripting loadScript <脚本绝对路径>`, 输出为脚本id
 - 运行脚本：`qdbus6 org.kde.KWin /Scripting/Script<脚本id> run`
 - 卸载脚本：`qdbus6 org.kde.KWin /Scripting unloadScript <脚本绝对路径>`
