@@ -1,0 +1,19 @@
+{
+  "KPlugin": {
+    "Authors": [
+      {
+        "Email": "ruan.lj@foxmail.com",
+        "Name": "ruan.lj"
+      }
+    ],
+    "Description": "Auto turn off nightlight when fullscreen",
+    "Icon": "preferences-system-windows-script-test",
+    "Id": "auto-night",
+    "License": "GPL",
+    "Name": "Auto Night",
+    "Version": "0.0.2"
+  },
+  "X-Plasma-API": "javascript",
+  "X-Plasma-MainScript": "code/main.js",
+  "KPackageStructure": "KWin/Script"
+}
