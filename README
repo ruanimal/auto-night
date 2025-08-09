@@ -1,6 +1,24 @@
 # Auto Night
 Kwin 脚本，根据是否有全屏应用，自动切换 nightlight 状态
 
+## 打包
+zip -r auto-night.kwinscript auto-night
+
+## 安装
+设置 -> 窗口管理 -> kwin 脚本 -> 从文件安装
+
+安装后脚本目录结构
+```
+/home/<username>/.local/share/kwin/scripts
+├── auto-night
+│   ├── contents
+│   │   └── code
+│   │       └── main.js
+│   ├── metadata.json
+│   └── README
+└── kwin.js
+```
+
 ## 调试
 js 脚本是基于监听事件模式运行的，运行脚本时无法获得返回值
 可以 journalctl 查看标准输出和错误输出
