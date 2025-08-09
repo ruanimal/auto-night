@@ -45,9 +45,9 @@ function checkAndAdjustNightLight(signal, window) {
     if (window && (!window.normalWindow)) {
         return;
     }
-    if (window) {
-        print(`Window ${signal}: ${window.caption} (${window.desktopFileName})`);
-    }
+    // if (window) {
+    //     print(`Window ${signal}: ${window.caption} (${window.desktopFileName})`);
+    // }
     onNightRunning(nightCallback);
 }
 
