@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Auto Night
+Comment=Auto turn off nightlight when fullscreen
+
+Icon=preferences-system-windows-script-test
+Type=Service
+
+X-Plasma-API=javascript
+X-Plasma-MainScript=code/main.js

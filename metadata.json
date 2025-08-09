@@ -1,0 +1,21 @@
+{
+  "KPlugin": {
+    "Authors": [
+      {
+        "Email": "ruan.lj@foxmail.com",
+        "Name": "ruan.lj"
+      }
+    ],
+    "Description": "Auto turn off nightlight when fullscreen",
+    "Icon": "preferences-system-windows-script-test",
+    "Id": "auto-night",
+    "License": "GPL",
+    "Name": "Auto Night",
+    "ServiceTypes": ["KWin/Script"],
+    "Version": "0.0.1"
+  },
+  "X-KDE-ParentComponents": ["auto-night"],
+  "X-KDE-PluginKeyword": "auto-night",
+  "X-Plasma-API": "javascript",
+  "X-Plasma-MainScript": "code/main.js"
+}

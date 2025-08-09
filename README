@@ -1,0 +1,20 @@
+# Auto Night
+Kwin 脚本，根据是否有全屏应用，自动切换 nightlight 状态
+
+## 调试
+- 查看日志：`journalctl --user-unit=plasma-kwin_wayland -f -n100`
+- 加载脚本：`qdbus6 org.kde.KWin /Scripting loadScript <脚本绝对路径>`, 输出为脚本id
+- 运行脚本：`qdbus6 org.kde.KWin /Scripting/Script<脚本id> run`
+- 卸载脚本：`qdbus6 org.kde.KWin /Scripting unloadScript <脚本绝对路径>`
+
+## 参考
+### 文档
+- https://develop.kde.org/docs/plasma/kwin/api/
+
+### 命令行控制 nightlight
+切换状态
+- qdbus6 org.kde.kglobalaccel /component/kwin invokeShortcut "Toggle Night Color"
+
+获取状态
+- qdbus6 org.kde.KWin /org/kde/KWin/NightLight org.kde.KWin.NightLight.running
+- qdbus6 org.kde.KWin /org/kde/KWin/NightLight  org.freedesktop.DBus.Properties.Get  org.kde.KWin.NightLight running
