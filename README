@@ -13,6 +13,7 @@ js 脚本是基于监听事件模式运行的，运行脚本时无法获得返�
 
 ## 参考
 ### 文档
+- https://develop.kde.org/docs/plasma/kwin/
 - https://develop.kde.org/docs/plasma/kwin/api/
 
 ### 命令行控制 nightlight
@@ -21,4 +22,4 @@ js 脚本是基于监听事件模式运行的，运行脚本时无法获得返�
 
 获取状态
 - qdbus6 org.kde.KWin /org/kde/KWin/NightLight org.kde.KWin.NightLight.running
-- qdbus6 org.kde.KWin /org/kde/KWin/NightLight  org.freedesktop.DBus.Properties.Get  org.kde.KWin.NightLight running
+- qdbus6 org.kde.KWin /org/kde/KWin/NightLight org.freedesktop.DBus.Properties.Get org.kde.KWin.NightLight running

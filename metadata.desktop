@@ -1,9 +1,12 @@
 [Desktop Entry]
 Name=Auto Night
 Comment=Auto turn off nightlight when fullscreen
-
-Icon=preferences-system-windows-script-test
-Type=Service
-
-X-Plasma-API=javascript
-X-Plasma-MainScript=code/main.js
+Version=0.0.1
+ServiceTypes=KWin/Script
+X-KDE-PluginInfo-Author=ruan.lj
+X-KDE-PluginInfo-Email=ruan.lj@foxmail.com
+X-KDE-PluginInfo-Name=auto-night
+X-KDE-PluginInfo-Version=0.0.1
+X-KDE-PluginInfo-Website=https://example.com
+X-KDE-PluginInfo-Category=Window Management
+X-KDE-PluginInfo-License=GPL
