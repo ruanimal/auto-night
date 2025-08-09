@@ -2,7 +2,7 @@
 Kwin 脚本，根据是否有全屏应用，自动切换 nightlight 状态
 
 ## 打包
-zip -r auto-night.kwinscript auto-night
+zip -r auto-night.kwinscript auto-night -x "auto-night/.git/*"
 
 ## 安装
 设置 -> 窗口管理 -> kwin 脚本 -> 从文件安装
