@@ -11,7 +11,7 @@
     "Id": "auto-night",
     "License": "GPL",
     "Name": "Auto Night",
-    "Version": "0.0.2"
+    "Version": "0.0.3"
   },
   "X-Plasma-API": "javascript",
   "X-Plasma-MainScript": "code/main.js",

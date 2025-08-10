@@ -74,3 +74,11 @@ workspace.windowRemoved.connect(function (window) {
 
 // 初始化时检查一次
 onNightRunning(nightCallback);
+for (let w of workspace.windowList()) {
+    if (w.normalWindow && w.caption) {
+        print(`Add callback for: ${w.caption} (${w.desktopFileName})`);
+        w.fullScreenChanged.connect(function() {
+            checkAndAdjustNightLight('fullscreen_changed', w);
+        });
+    }
+}
