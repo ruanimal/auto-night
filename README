@@ -28,6 +28,7 @@ js 脚本是基于监听事件模式运行的，运行脚本时无法获得返�
 - 加载脚本：`qdbus6 org.kde.KWin /Scripting loadScript <脚本绝对路径>`, 输出为脚本id
 - 运行脚本：`qdbus6 org.kde.KWin /Scripting/Script<脚本id> run`
 - 卸载脚本：`qdbus6 org.kde.KWin /Scripting unloadScript <脚本绝对路径>`
+- 交互式调试：`plasma-interactiveconsole --kwin `，可以直接执行 js 代码，输出还是在 journalctl
 
 ## 参考
 ### 文档

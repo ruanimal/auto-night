@@ -6,7 +6,7 @@
         "Name": "ruan.lj"
       }
     ],
-    "Description": "Auto turn off nightlight when fullscreen",
+    "Description": "Auto toggle nightlight when fullscreen",
     "Icon": "preferences-system-windows-script-test",
     "Id": "auto-night",
     "License": "GPL",
