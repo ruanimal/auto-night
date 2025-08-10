@@ -7,12 +7,15 @@
       }
     ],
     "Description": "Auto toggle nightlight when fullscreen",
+    "Description[zh_CN]": "当全屏时自动切换夜间颜色状态",
     "Icon": "preferences-system-windows-script-test",
     "Id": "auto-night",
     "License": "GPL",
     "Name": "Auto Night",
-    "Version": "0.0.3"
+    "Name[zh_CN]": "自动夜间颜色",
+    "Version": "0.0.4"
   },
+  "X-KDE-ConfigModule": "kwin/effects/configs/kcm_kwin4_genericscripted",
   "X-Plasma-API": "javascript",
   "X-Plasma-MainScript": "code/main.js",
   "KPackageStructure": "KWin/Script"

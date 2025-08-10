@@ -1,4 +1,4 @@
-print("auto night running");
+const Ignorelist = readConfig("Ignorelist", "an.app.placeholder.name").toString().toLowerCase().split(",");
 
 function toggleNight() {
     callDBus(
@@ -24,6 +24,9 @@ function onNightRunning(callback) {
 
 function needNight() {
     for (let w of workspace.windowList()) {
+        if (w.desktopFileName && Ignorelist.includes(w.desktopFileName.toString().toLowerCase())) {
+            continue;
+        }
         if (w.normalWindow && w.fullScreen && w.layer > 2) {
             print(`fullScreen app caption: ${w.caption}, layer: ${w.layer}, desktopFileName: ${w.desktopFileName}`);
             return false;
@@ -73,6 +76,7 @@ workspace.windowRemoved.connect(function (window) {
 });
 
 // 初始化时检查一次
+print(`auto night running, Ignorelist: ${Ignorelist}`);
 onNightRunning(nightCallback);
 for (let w of workspace.windowList()) {
     if (w.normalWindow && w.caption) {

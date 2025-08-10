@@ -7,17 +7,8 @@ zip -r auto-night.kwinscript auto-night -x "auto-night/.git/*"
 ## 安装
 设置 -> 窗口管理 -> kwin 脚本 -> 从文件安装
 
-安装后脚本目录结构
-```
-/home/<username>/.local/share/kwin/scripts
-├── auto-night
-│   ├── contents
-│   │   └── code
-│   │       └── main.js
-│   ├── metadata.json
-│   └── README
-└── kwin.js
-```
+可以在配置中设置需要忽略的窗口，使用逗号分隔的应用程序 desktopFileName 列表。
+修改配置后需要禁用再启用插件才能生效。
 
 ## 调试
 js 脚本是基于监听事件模式运行的，运行脚本时无法获得返回值
@@ -29,6 +20,7 @@ js 脚本是基于监听事件模式运行的，运行脚本时无法获得返�
 - 运行脚本：`qdbus6 org.kde.KWin /Scripting/Script<脚本id> run`
 - 卸载脚本：`qdbus6 org.kde.KWin /Scripting unloadScript <脚本绝对路径>`
 - 交互式调试：`plasma-interactiveconsole --kwin `，可以直接执行 js 代码，输出还是在 journalctl
+- 重启kwin：`kwin_wayland --replace &`，用于重新加载 kwin，可以清理历史脚本
 
 ## 参考
 ### 文档
