@@ -1,4 +1,5 @@
 const Ignorelist = readConfig("Ignorelist", "an.app.placeholder.name").toString().toLowerCase().split(",");
+var lastToggleTime = 0;
 
 function toggleNight() {
     callDBus(
@@ -24,11 +25,13 @@ function onNightRunning(callback) {
 
 function needNight() {
     for (let w of workspace.windowList()) {
-        if (w.desktopFileName && Ignorelist.includes(w.desktopFileName.toString().toLowerCase())) {
+        const resourceClass = w.desktopFileName || w.resourceClass || "";
+        if (resourceClass && Ignorelist.includes(resourceClass.toString().toLowerCase())) {
             continue;
         }
-        if (w.normalWindow && w.fullScreen && w.layer > 2) {
-            print(`fullScreen app caption: ${w.caption}, layer: ${w.layer}, desktopFileName: ${w.desktopFileName}`);
+        if (w.normalWindow && w.fullScreen && w.layer > 2 && w.active) {
+            print(`fullScreen app caption: ${w.caption}, layer: ${w.layer},` +
+                ` desktopFileName: ${w.desktopFileName}, resourceClass: ${w.resourceClass}`);
             return false;
         }
     }
@@ -37,8 +40,14 @@ function needNight() {
 
 function nightCallback(isNight) {
     const need = needNight();
+    const now = Date.now();
+    if (now - lastToggleTime < 2000) {
+        print(`Toggle too frequent, isNight: ${isNight}, need: ${need}`);
+        return;
+    }
     if (isNight !== need) {
         toggleNight();
+        lastToggleTime = now;
         print(`Toggle Night Light, isNight: ${isNight}, need: ${need}`);
     }
 }
@@ -54,21 +63,23 @@ function checkAndAdjustNightLight(signal, window) {
     onNightRunning(nightCallback);
 }
 
+function addWindowCallback(window) {
+    if (!window.normalWindow || !window.caption) {
+        return;
+    }
+    print(`Add callback for: ${window.caption} (${window.desktopFileName} | ${window.resourceClass})`);
+    window.fullScreenChanged.connect(function() {
+        checkAndAdjustNightLight('fullscreen_changed', window);
+    });
+}
+
 // 监听窗口激活事件（窗口切换）
 workspace.windowActivated.connect(function (window) {
     checkAndAdjustNightLight('activated', window);
 });
 
 // 监听窗口添加事件
-workspace.windowAdded.connect(function (window) {
-    if (!window.normalWindow || !window.caption) {
-        return;
-    }
-    print(`Add callback for: ${window.caption} (${window.desktopFileName})`);
-    window.fullScreenChanged.connect(function() {
-        checkAndAdjustNightLight('fullscreen_changed', window);
-    });
-});
+workspace.windowAdded.connect(addWindowCallback);
 
 // 监听窗口移除事件
 workspace.windowRemoved.connect(function (window) {
@@ -79,10 +90,5 @@ workspace.windowRemoved.connect(function (window) {
 print(`auto night running, Ignorelist: ${Ignorelist}`);
 onNightRunning(nightCallback);
 for (let w of workspace.windowList()) {
-    if (w.normalWindow && w.caption) {
-        print(`Add callback for: ${w.caption} (${w.desktopFileName})`);
-        w.fullScreenChanged.connect(function() {
-            checkAndAdjustNightLight('fullscreen_changed', w);
-        });
-    }
+    addWindowCallback(w);
 }

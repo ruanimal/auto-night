@@ -13,7 +13,7 @@
     "License": "GPL",
     "Name": "Auto Night",
     "Name[zh_CN]": "自动夜间颜色",
-    "Version": "0.0.4"
+    "Version": "0.0.5"
   },
   "X-KDE-ConfigModule": "kwin/effects/configs/kcm_kwin4_genericscripted",
   "X-Plasma-API": "javascript",
